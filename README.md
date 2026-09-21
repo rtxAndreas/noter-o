@@ -77,5 +77,6 @@ git tag v0.1.0
 git push origin v0.1.0
 ```
 
-La signature Android n’est pas activée pour l’instant ; l’APK est destiné aux
-tests et peut être installé manuellement sur un appareil Android.
+Le workflow signe l’APK avec les secrets GitHub `KEYSTORE_BASE64`,
+`RELEASE_KEYSTORE_PASSWORD`, `RELEASE_KEY_ALIAS` et `RELEASE_KEY_PASSWORD`.
+L’APK signé peut ensuite être installé manuellement sur un appareil Android.

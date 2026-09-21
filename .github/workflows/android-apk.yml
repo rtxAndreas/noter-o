@@ -60,14 +60,51 @@ jobs:
       - name: Initialize Tauri Android project
         run: pnpm exec tauri android init
 
+      - name: Configure Android release signing
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
+          RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+          RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
+        run: |
+          for secret_name in KEYSTORE_BASE64 RELEASE_KEYSTORE_PASSWORD RELEASE_KEY_ALIAS RELEASE_KEY_PASSWORD; do
+            if [ -z "${!secret_name}" ]; then
+              echo "The $secret_name secret is missing" >&2
+              exit 1
+            fi
+          done
+          printf '%s' "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.jks"
+          chmod 600 "$RUNNER_TEMP/release.jks"
+          node scripts/configure-android-signing.mjs
+
       - name: Build APK
+        env:
+          RELEASE_KEYSTORE_PATH: ${{ runner.temp }}/release.jks
+          RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
+          RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+          RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
         run: pnpm exec tauri android build --apk --target aarch64
+
+      - name: Verify APK signature
+        run: |
+          mkdir -p artifacts/android
+          found_signed_apk=0
+          while IFS= read -r -d '' apk; do
+            if "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$apk"; then
+              cp "$apk" "artifacts/android/$(basename "$apk")"
+              found_signed_apk=1
+            fi
+          done < <(find src-tauri/gen/android/app/build/outputs/apk -type f -name '*.apk' -print0)
+          if [ "$found_signed_apk" -ne 1 ]; then
+            echo "No signed APK was produced" >&2
+            exit 1
+          fi
 
       - name: Upload APK
         uses: actions/upload-artifact@v7
         with:
           name: noter-o-android-apk
-          path: src-tauri/gen/android/app/build/outputs/apk/**/*.apk
+          path: artifacts/android/*.apk
           if-no-files-found: error
           retention-days: 14
 
@@ -76,7 +113,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          mapfile -d '' apks < <(find src-tauri/gen/android/app/build/outputs/apk -type f -name '*.apk' -print0)
+          mapfile -d '' apks < <(find artifacts/android -type f -name '*.apk' -print0)
           if [ "${#apks[@]}" -eq 0 ]; then
             echo "No APK found for the GitHub Release" >&2
             exit 1
