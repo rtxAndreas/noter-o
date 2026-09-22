@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Note-O app", () => {
+test.describe("Noter-O app", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
     await page.evaluate(async () => {
@@ -149,7 +149,7 @@ test.describe("Note-O app", () => {
     await context.setOffline(true);
     await page.reload({ waitUntil: "domcontentloaded" });
 
-    await expect(page.getByRole("heading", { name: "Note-O" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Noter-O" })).toBeVisible();
     await expect(page.getByText("Total général")).toBeVisible();
   });
 });

@@ -4,31 +4,31 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000"),
-  title: "Note-O",
+  title: "Noter-O",
   description:
     "Bloc-notes calculatrice intelligent — Calculez vos opérations en un clin d'œil.",
-  applicationName: "Note-O",
-  authors: [{ name: "Andreas CircutLab" }],
-  creator: "Andreas CircutLab",
-  publisher: "Andreas CircutLab",
+  applicationName: "Noter-O",
+  authors: [{ name: "A-Andreas" }],
+  creator: "A-Andreas",
+  publisher: "A-Andreas",
   other: {
-    copyright: "Copyright © 2026 Andreas CircutLab. Tous droits réservés.",
+    copyright: "Copyright © 2026 A-Andreas. Tous droits réservés.",
   },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Note-O",
+    title: "Noter-O",
   },
   formatDetection: {
     telephone: false,
   },
   manifest: "/manifest.json",
   openGraph: {
-    title: "Note-O",
+    title: "Noter-O",
     description:
       "Bloc-notes calculatrice intelligent pour vos opérations quotidiennes.",
     type: "website",
-    siteName: "Note-O",
+    siteName: "Noter-O",
   },
 };
 
@@ -79,7 +79,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             }}
           >
             <h1 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>
-              Note-O nécessite JavaScript
+              Noter-O nécessite JavaScript
             </h1>
             <p style={{ color: "#71717a" }}>
               Veuillez activer JavaScript dans votre navigateur pour utiliser

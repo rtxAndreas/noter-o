@@ -1,7 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 
 const buildFile = "src-tauri/gen/android/app/build.gradle.kts";
-const marker = "// Note-O release signing (configured by CI)";
+const marker = "// Noter-O release signing (configured by CI)";
 
 let contents = await readFile(buildFile, "utf8");
 

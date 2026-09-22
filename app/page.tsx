@@ -248,9 +248,14 @@ export default function Home() {
             <div className="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center">
               <Calculator className="w-4 h-4 text-white" />
             </div>
-            <h1 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
-              Note-O
-            </h1>
+            <div className="flex flex-col leading-none">
+              <h1 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
+                Noter-O
+              </h1>
+              <span className="text-[10px] font-medium tracking-wide text-zinc-500 dark:text-zinc-400">
+                A-Andreas
+              </span>
+            </div>
           </div>
           <div className="flex items-center gap-1">
             <button

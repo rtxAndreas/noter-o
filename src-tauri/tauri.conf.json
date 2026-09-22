@@ -1,6 +1,6 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
-  "productName": "Note-O",
+  "productName": "Noter-O",
   "version": "0.1.0",
   "identifier": "com.noter.app",
   "build": {
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "Note-O",
+        "title": "Noter-O",
         "width": 800,
         "height": 600,
         "resizable": true,
@@ -25,8 +25,8 @@
   },
   "bundle": {
     "active": true,
-    "publisher": "Andreas CircutLab",
-    "copyright": "Copyright © 2026 Andreas CircutLab. Tous droits réservés.",
+    "publisher": "A-Andreas",
+    "copyright": "Copyright © 2026 A-Andreas. Tous droits réservés.",
     "category": "Productivity",
     "targets": ["deb", "appimage"],
     "icon": [

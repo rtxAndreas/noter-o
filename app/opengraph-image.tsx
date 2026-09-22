@@ -46,7 +46,7 @@ export default function OGImage() {
           >
             +
           </div>
-          <span style={{ fontSize: "48px", fontWeight: "bold" }}>Note-O</span>
+          <span style={{ fontSize: "48px", fontWeight: "bold" }}>Noter-O</span>
         </div>
         <span style={{ fontSize: "24px", opacity: 0.9 }}>
           Bloc-notes calculatrice intelligent

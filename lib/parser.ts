@@ -1,5 +1,5 @@
 /**
- * Expression parser for Note-O.
+ * Expression parser for Noter-O.
  * Strips parenthesized comments and currency units, then evaluates
  * basic arithmetic (+, -, *, /).
  * Adjacent numbers without an operator are implicitly added

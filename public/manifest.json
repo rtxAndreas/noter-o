@@ -1,6 +1,6 @@
 {
-  "name": "Note-O",
-  "short_name": "Note-O",
+  "name": "Noter-O",
+  "short_name": "Noter-O",
   "description": "Bloc-notes calculatrice intelligent pour vos opérations quotidiennes.",
   "start_url": "/",
   "scope": "/",
