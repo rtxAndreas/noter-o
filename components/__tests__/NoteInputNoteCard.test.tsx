@@ -95,10 +95,10 @@ describe("NoteInput", () => {
     const input = screen.getByPlaceholderText(/20000ar \(carburant\)/);
     await user.type(input, "2000ar (operateur) 1000 bus\n100.000 + 400.000");
 
-    expect(screen.getByText("= 3.000 Ar")).toBeInTheDocument();
-    expect(screen.getByText("= 500.000 Ar")).toBeInTheDocument();
+    expect(screen.getByText("= 3 000 Ar")).toBeInTheDocument();
+    expect(screen.getByText("= 500 000 Ar")).toBeInTheDocument();
     expect(screen.getByText("total =")).toBeInTheDocument();
-    expect(screen.getByText("503.000 Ar")).toBeInTheDocument();
+    expect(screen.getByText("503 000 Ar")).toBeInTheDocument();
   });
 
   it("flags a specific invalid line in a multi-line input", async () => {
@@ -109,7 +109,7 @@ describe("NoteInput", () => {
     const input = screen.getByPlaceholderText(/20000ar \(carburant\)/);
     await user.type(input, "2000 + 1000\ncafe pas frais\n500 + 500");
 
-    expect(screen.getByText("= 3.000 Ar")).toBeInTheDocument();
+    expect(screen.getByText("= 3 000 Ar")).toBeInTheDocument();
     expect(screen.getAllByText("cafe pas frais").length).toBeGreaterThan(0);
     expect(screen.getAllByText("= invalide").length).toBeGreaterThan(0);
     expect(onAdd).not.toHaveBeenCalled();
@@ -148,7 +148,7 @@ describe("SessionCard", () => {
       screen.getByText("loyer 100.000 (cent mille ariary) + provision 400.000 ar")
     ).toBeInTheDocument();
     expect(screen.getByText("total =")).toBeInTheDocument();
-    expect(screen.getByText("503.000")).toBeInTheDocument();
+    expect(screen.getByText("503 000")).toBeInTheDocument();
     expect(screen.getByText("15 sept. 2026")).toBeInTheDocument();
   });
 

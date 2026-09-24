@@ -1,3 +1,5 @@
+import { formatNumber } from "@/lib/formatNumber";
+
 /**
  * Expression parser for Noter-O.
  * Strips parenthesized comments and currency units, then evaluates
@@ -100,10 +102,5 @@ function safeEval(expr: string): number | null {
 }
 
 export function formatResult(value: number): string {
-  const formatted = new Intl.NumberFormat("fr-FR", {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
-  }).format(value);
-  // French/Malagasy monetary norm: narrow spaces become dots
-  return formatted.replace(/[\u00a0\u202f]/g, ".");
+  return formatNumber(value);
 }

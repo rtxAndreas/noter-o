@@ -23,7 +23,7 @@ test.describe("Noter-O app", () => {
 
     await expect(page.getByText("20000ar (carburant) + 3000")).toBeVisible();
     await expect(page.getByText("total =")).toBeVisible();
-    await expect(page.getByText("23.000").first()).toBeVisible();
+    await expect(page.getByText("23 000").first()).toBeVisible();
   });
 
   test("adds a multi-line session with implicit addition and dot thousands", async ({
@@ -41,7 +41,7 @@ test.describe("Noter-O app", () => {
     await expect(
       page.getByText("loyer 100.000 (cent mille ariary) + provision 400.000 ar")
     ).toBeVisible();
-    await expect(page.getByText("503.000").first()).toBeVisible();
+    await expect(page.getByText("503 000").first()).toBeVisible();
   });
 
   test("allows choosing a session date", async ({ page }) => {

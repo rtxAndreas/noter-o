@@ -98,17 +98,17 @@ describe("parseExpression", () => {
 });
 
 describe("formatResult", () => {
-  it("uses dots as thousand separators (norme monétaire)", () => {
-    expect(formatResult(23000)).toBe("23.000");
-    expect(formatResult(500000)).toBe("500.000");
-    expect(formatResult(10000)).toBe("10.000");
-    expect(formatResult(200000)).toBe("200.000");
-    expect(formatResult(1000000)).toBe("1.000.000");
+  it("uses spaces as French thousand separators", () => {
+    expect(formatResult(23000)).toBe("23 000");
+    expect(formatResult(500000)).toBe("500 000");
+    expect(formatResult(10000)).toBe("10 000");
+    expect(formatResult(200000)).toBe("200 000");
+    expect(formatResult(1000000)).toBe("1 000 000");
   });
 
   it("formats numbers with comma decimals", () => {
-    expect(formatResult(23000.5)).toBe("23.000,5");
-    expect(formatResult(1500000.5)).toBe("1.500.000,5");
+    expect(formatResult(23000.5)).toBe("23 000,5");
+    expect(formatResult(1500000.5)).toBe("1 500 000,5");
   });
 
   it("formats small numbers without separators", () => {

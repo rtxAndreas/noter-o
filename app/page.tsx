@@ -12,6 +12,7 @@ import InstallPrompt from "@/components/InstallPrompt";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import Toast from "@/components/Toast";
 import ConfirmDialog from "@/components/ConfirmDialog";
+import MultiplicationExample from "@/components/MultiplicationExample";
 import { Calculator, Search } from "lucide-react";
 
 export default function Home() {
@@ -272,6 +273,8 @@ export default function Home() {
         </header>
 
         <NoteInput onAdd={handleAdd} onClearAll={() => setClearAllOpen(true)} />
+
+        <MultiplicationExample />
 
         <Filters
           searchQuery={searchQuery}
